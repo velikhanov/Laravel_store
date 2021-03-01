@@ -1,0 +1,137 @@
+/*Section*/
+section{
+  width: 100%;
+}
+/*Section1*/
+.carousel-control-prev-icon, .carousel-control-next-icon{
+  width: 50px;
+  height: 50px;
+}
+.carousel-indicators{
+  z-index: 1;
+}
+/*Section2*/
+.s2tittle{
+  padding: 20px 0;
+  text-align: center;
+  font-weight: 900;
+}
+/*S2 slider*/
+a:hover{
+  text-decoration: none;
+}
+.slider-img{
+position: relative;
+margin: 10px;
+}
+.prch{
+  display: flex;
+  justify-content: space-between;
+}
+.card-title{
+  font-size: 15px;
+  color: #000;
+}
+.reg{
+font-size: 13px;
+margin-left: 5px;
+}
+.card-text{
+  font-size: 13px;
+}
+.feedback{
+  padding-top: 3px;
+}
+.toast{
+  max-width: none;
+}
+.toast.fixed-top{
+  margin-top: 30px;
+  left: auto;
+  right: auto;
+}
+.toast-header{
+  border: 0;
+  padding: 0.75rem 1.25rem;
+  color: #fff;
+  border-radius: 0.25rem;
+}
+.close{
+  opacity: 1;
+  color: #fff;
+  text-shadow: 0 1px 0 #000;
+}
+.close:hover{
+  color: #fff;
+  opacity: 0.5;
+}
+/*Modal-Purchase*/
+.login-form.modal-purchase{
+  width: auto;
+  margin: 0 auto;
+  padding: 0;
+}
+.login-form.modal-purchase form{
+  margin-bottom: 0;
+  border-radius: 30px;
+}
+.login-form form a:hover{
+  margin-bottom: 0;
+  border-radius: 30px;
+  text-decoration: none;
+}
+.modal-body{
+  padding: 0;
+}
+.modal-content{
+  border-radius: 17rem;
+}
+.close, .close-modal{
+  color: #000;
+  text-shadow: 0 1px 0 #fff;
+}
+.basketimg{
+  width: 50px;
+  height: auto;
+}
+.basket-prod-name{
+  color: #000;
+  font-size: 15px;
+}
+.table th, .table td{
+  vertical-align: baseline;
+}
+input[name=inputModal]{
+  outline: 0;
+  border-radius: 10px;
+  text-align: center;
+}
+/* .fas.fa-plus-square{
+  color: #218838;
+  font-size: 35px;
+  cursor: pointer;
+}
+.fas.fa-minus-square{
+  color: #C82333;
+  font-size: 35px;
+  cursor: pointer;
+} */
+/*fa*/
+.fas.fa-check{
+  font-size: 12px;
+  margin: 0 5px;
+  color: green;
+}
+.fas.fa-times{
+  font-size: 18px;
+  margin: 0 5px;
+  color: red;
+}
+.fa.fa-star{
+  font-size: 12px;
+  color: gold;
+}
+.fa.fa-handshake{
+  font-size: 12px;
+  color: #32bea6;
+}

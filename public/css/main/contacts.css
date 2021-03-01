@@ -1,0 +1,18 @@
+.section {
+  min-height: 100vh;
+}
+
+.contgooglemap {
+  width: 100%;
+  height: 450px;
+}
+
+.textemail {
+  padding-bottom: 5px;
+  border-bottom: 3px solid #6c757d;
+}
+
+.num {
+  padding-bottom: 5px;
+  border-bottom: 3px solid #6c757d;
+}

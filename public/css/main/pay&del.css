@@ -1,0 +1,127 @@
+.section {
+  width: 100%;
+  min-height: 100vh;
+}
+
+.payanddelimg {
+  margin-top: 20px;
+  width: 100%;
+  height: auto;
+}
+
+.paytittle {
+  color: #3a3a3a;
+}
+
+.btn.pay {
+  margin-top: 20px;
+  background-color: #eff8fd;
+  border: 1px solid #329fdc;
+  border-radius: 0;
+  max-width: 200px;
+}
+
+.btn.pay:hover,
+.btn.pay:active {
+  background-color: #ffdc8c;
+  border: 1px solid #f4b011;
+}
+
+/*1item*/
+
+.fst-column,
+.snd-column {
+  display: flex;
+  margin-bottom: 20px;
+  border-bottom: 1px dashed #000;
+}
+
+.cardimg {
+  margin-right: 10px;
+  width: 50px;
+  height: 50px;
+}
+
+.paytext {
+  text-align: justify;
+}
+
+/*2item*/
+
+.orderbox {
+  margin-bottom: 20px;
+  border-bottom: 3px solid #043a64;
+}
+
+.delimg {
+  width: 170px;
+  height: 100px;
+}
+
+.delflex {
+  display: flex;
+  justify-content: space-between;
+}
+
+.googleadr {
+  width: 100%;
+  height: 450px;
+  margin-top: 10px;
+  padding-bottom: 20px;
+  border-bottom: 3px solid #043a64;
+}
+
+.fa.fa-check {
+  color: green;
+}
+
+.fas.fa-exclamation-circle {
+  color: #f2a100;
+}
+
+.fa.fa-check,
+.fas.fa-exclamation-circle {
+  margin-right: 5px;
+}
+
+.row.delboxeshead {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 20px;
+  border-bottom: 3px solid #043a64;
+}
+
+.delboxes {
+  min-width: 375px;
+  min-height: 250px;
+  border: 3px solid #f0f1f2;
+}
+
+.bgbox {
+  min-height: 150px;
+  margin: 0 30px;
+  background-color: #e9ecef;
+  border-top: 3px solid #f0f1f2;
+}
+
+.bgboxtext_1 {
+  margin: 10px 5px 0 10px;
+}
+
+.bgboxtext_2 {
+  margin-left: 20px;
+}
+
+.delintimeimg {
+  display: block;
+  margin: 0 auto;
+  width: 250px;
+  height: auto;
+}
+
+/*3item*/
+
+.acceptbox {
+  border: 3px solid #a3a1a1;
+  padding: 20px;
+}

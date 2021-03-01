@@ -1,0 +1,168 @@
+.section{
+  min-height: 100vh;
+}
+/*Slider*/
+.row-box{
+  margin-top: 2.5%;
+  border:1px solid #dfdfdf;
+}
+.prodimgbig{
+  width: auto;
+  height: 300px;
+  margin: 0 auto;
+}
+.prodimgsmall{
+  width: auto;
+  height: 100px;
+}
+.productslider__small{
+  margin-top: 50px;
+}
+/*Card*/
+.card-footer{
+  padding: 0 1.25rem;
+}
+.prch{
+  display: flex;
+  justify-content: space-between;
+}
+.card{
+  margin-top: 25%;
+  max-width: 100%;
+  max-height: 450px;
+}
+.card-title{
+  font-size: 25px;
+}
+.card-body{
+  max-width: 100%;
+  padding: 20px;
+}
+.reg{
+  font-size: 17px;
+  margin-left: 5px;
+}
+.card-text{
+  font-size: 20px;
+}
+.feedback{
+  padding-top: 3px;
+}
+.btn-group.form-inline{
+  margin: 0 auto;
+}
+.baskbuy{
+  display: block;
+  margin: 0 auto;
+}
+.toast{
+  max-width: none;
+}
+.toast.fixed-top{
+  margin-top: 30px;
+  left: auto;
+  right: auto;
+}
+.toast-header{
+  border: 0;
+  padding: 0.75rem 1.25rem;
+  color: #fff;
+  border-radius: 0.25rem;
+}
+.close{
+  opacity: 1;
+  color: #fff;
+  text-shadow: 0 1px 0 #000;
+}
+.close:hover{
+  color: #fff;
+  opacity: 0.5;
+}
+/*Modal-Purchase*/
+.login-form.modal-purchase{
+  width: auto;
+  margin: 0 auto;
+  padding: 0;
+}
+.login-form.modal-purchase form{
+  margin-bottom: 0;
+  border-radius: 30px;
+}
+.login-form form a:hover{
+  margin-bottom: 0;
+  border-radius: 30px;
+  text-decoration: none;
+}
+.modal-body{
+  padding: 0;
+}
+.modal-content{
+  border-radius: 17rem;
+}
+.close, .close-modal{
+  color: #000;
+  text-shadow: 0 1px 0 #fff;
+}
+.basketimg{
+  width: 50px;
+  height: auto;
+}
+.basket-prod-name{
+  color: #000;
+  font-size: 15px;
+}
+.table th, .table td{
+  vertical-align: baseline;
+}
+/*fa*/
+.fas.fa-check{
+  font-size: 15px;
+  margin: 0 5px;
+  color: green;
+}
+.fas.fa-times{
+  font-size: 18px;
+  margin: 0 5px;
+  color: red;
+}
+.fa.fa-star{
+  font-size: 12px;
+  color: gold;
+}
+.fa.fa-handshake{
+  font-size: 15px;
+  color: #32bea6;
+}
+.fas.fa-balance-scale{
+  color: #000;
+  font-size: 25px;
+}
+.fas.fa-plus-square{
+  color: #218838;
+  font-size: 35px;
+}
+.fas.fa-minus-square{
+  color: #C82333;
+  font-size: 35px;
+}
+.fas.fa-minus-square:hover, .fas.fa-plus-square:hover{
+  opacity: 0.7;
+}
+/*Properties*/
+.btn.pay {
+  margin-top: 20px;
+  background-color: #eff8fd;
+  border: 1px solid #329fdc;
+  border-radius: 0;
+  max-width: 200px;
+}
+
+.btn.pay:hover,
+.btn.pay:active {
+  background-color: #ffdc8c;
+  border: 1px solid #f4b011;
+}
+
+.borderprop{
+  margin: 20px 0;
+}

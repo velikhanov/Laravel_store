@@ -1,0 +1,51 @@
+.section{
+  margin: 20px 0;
+}
+.btn.btn-danger.clearcart{
+  margin: 0 0 0 auto;
+}
+.basketimg{
+  width: 50px;
+  height: auto;
+}
+.basket-prod-name{
+  color: #000;
+  font-size: 15px;
+}
+.table td.trash-btn {
+    border-top: none;
+}
+.prodcount{
+  display: block;
+  display: inline-block;
+  min-width: 10px;
+  padding: 3px 7px;
+  margin-right: 5px;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1;
+  color: #fff;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  background-color: #777;
+  border-radius: 10px;
+}
+.fas.fa-plus-square{
+  color: #218838;
+  font-size: 35px;
+}
+.fas.fa-minus-square{
+  color: #C82333;
+  font-size: 35px;
+}
+.fas.fa-minus-square:hover, .fas.fa-plus-square:hover{
+  opacity: 0.7;
+}
+.fas.fa-trash-alt{
+  font-size: 25px;
+  color: #000;
+}
+.fas.fa-trash-alt:hover{
+  color: red;
+}
