@@ -9,6 +9,18 @@ use App\Models\Order;
 
 class AdminController extends Controller
 {
+
+    /*Admin*/
+    public function admin_order(){
+      $orders = Order::get();
+      $orders->transform(function($order, $key){
+        $order->cart = unserialize($order->cart);
+        return $order;
+      });
+      return view('auth.admin.admin-order', ['orders' => $orders]);
+    }
+    /**/
+
     public function user_panel(){
       $orders = Auth::user()->orders;
       $orders->transform(function($order, $key){
@@ -16,12 +28,6 @@ class AdminController extends Controller
         return $order;
       });
       return view('auth.users.user-panel', ['orders' => $orders]);
-    }
-    public function admin_panel(){
-      return view('auth.admin.admin-panel');
-    }
-    public function ceo_panel(){
-      return view('auth.admin.ceo-panel');
     }
 
     public function user_edit(Request $request){

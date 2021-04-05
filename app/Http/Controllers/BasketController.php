@@ -6,7 +6,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Auth;
 // use Illuminate\Support\Facades\Cookie;
+use Illuminate\Support\Facades\Storage;
 use App\Models\Product;
+use App\Models\ProductImage;
 use App\Models\Category;
 use App\Models\User;
 use App\Models\Order;
@@ -121,7 +123,7 @@ class BasketController extends Controller
       return response()->json([
             'modalProdId' => $product->id,
             'name' => $product->name,
-            'img' => "/img/products/".$product->cardImage->path,
+            'img' => $product->cardImage?(Storage::disk('public')->exists('products/'.$product->id.'/'.$product->cardImage->path)?Storage::url('products/'.$product->id.'/'.$product->cardImage->path):'/img/products/no-img.png'):'/img/products/no-img.png',
             'price' => $product->price
        ]);
   }
@@ -133,10 +135,11 @@ class BasketController extends Controller
       $request->id => array(
           'name' => $product->name,
           'qty' => $request->qty,
+          'id' => $request->id,
           'prod_url' => $product->url,
           'code_cat' => $product->category->code,
           'url_cat' => $product->category->url,
-          'img' => $product->cardImage->path,
+          'img' => $product->cardImage?(Storage::disk('public')->exists('products/'.$product->id.'/'.$product->cardImage->path)?Storage::url('products/'.$product->id.'/'.$product->cardImage->path):'/img/products/no-img.png'):'/img/products/no-img.png',
           'cost' => $product->price*$request->qty
         )
       );

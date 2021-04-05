@@ -18,20 +18,26 @@
       <div class="row">
           <div class="col-lg-8 col-md-8 col-sm-12 row-box">
               <div class="productslider__big">
-              @foreach($prod->productImage as $imgitem)
-                <a href="/img/products/{{ $imgitem->path }}" data-fancybox="gallery-1"><img class="prodimgbig" src="/img/products/{{ $imgitem->path }}"></a>
-              @endforeach
+              @if($prod->productImage->isNotEmpty())
+                @foreach($prod->productImage as $imgitem)
+                <a href="{{Storage::url('products/'.$prod->id)}}/{{ $imgitem->path}}" data-fancybox="gallery-1"><img class="prodimgbig" src="{{Storage::url('products/'.$prod->id)}}/{{ $imgitem->path}}"></a>
+                @endforeach
+              @else
+              <a href="/img/products/no-img.png" data-fancybox="gallery-1"><img class="prodimgbig" src="/img/products/no-img.png"></a>
+              @endif
               </div>
               <div class="productslider__small">
-              @foreach($prod->productImage as $imgitem)
-                <div><img class="prodimgsmall" src="/img/products/{{ $imgitem->path }}"></div>
-              @endforeach
+              @if($prod->productImage->isNotEmpty())
+                @foreach($prod->productImage as $imgitem)
+                <div><img class="prodimgsmall" src="{{Storage::url('products/'.$prod->id)}}/{{ $imgitem->path}}"></div>
+                @endforeach
+              @endif
               </div>
           </div><!--end col-->
           <div class="col-lg-4 col-md-4 col-sm-12">
             <div class="card">
-              <input class="prodlink" type="hidden" href="/{{Request::path()}}">
-              <input class="card-img-top" type="hidden" src="/img/products/{{ $prod->cardImage->path}}">
+              <!-- <input class="prodlink" type="hidden" href="/{{Request::path()}}">
+              <input class="card-img-top" type="hidden" src="/img/products/{{ $prod->cardImage->path ?? 'no-img.png'}}"> -->
               <div class="card-body text-center">
                 <span class="card-title border-bottom">{{ $prod->name }}</span>
                 <div class="prch mt-5 border-bottom"><span class="card-text">{{ $prod->price }} AZN</span><a class="compareicon" href="#"><i href="#" class="fas fa-balance-scale"></a></i></div><br>
@@ -64,46 +70,12 @@
       <div id="collapse_card_group" class="borderprop">
           <div class="collapse show" id="collapseExample_1" data-parent="#collapse_card_group">
             <table class="table table-bordered">
+              @for ($i=0; $i < (is_countable($prod->properties) && count($prod->properties)); $i++)
                 <tr>
-                  <th scope="row">Код товара:</th>
-                  <td>425263546534</td>
+                  <th scope="row">{{$prod->properties[$i]['key'] ?? ''}}:</th>
+                  <td>{{ $prod->properties[$i]['value'] ?? ''}}</td>
                 </tr>
-                <tr>
-                  <th scope="row">Бренд:</th>
-                  <td>Indesit</td>
-                </tr>
-                <tr>
-                  <th scope="row">Тип холодильника:</th>
-                  <td>С верхней морозильной камерой</td>
-                </tr>
-                <tr>
-                  <th scope="row">Система охлаждения холодильной камеры:</th>
-                  <td>Капельная</td>
-                </tr>
-                <tr>
-                  <th scope="row">Система охлаждения морозильной камеры:</th>
-                  <td>Капельная</td>
-                </tr>
-                <tr>
-                  <th scope="row">Полезный объем холодильной камеры:</th>
-                  <td>97 л</td>
-                </tr>
-                <tr>
-                  <th scope="row">Полезный объем морозильной камеры:</th>
-                  <td>33 л</td>
-                </tr>
-                <tr>
-                  <th scope="row">Класс жнергопотребления:</th>
-                  <td>А+</td>
-                </tr>
-                <tr>
-                  <th scope="row">Уровень шума:</th>
-                  <td>38 дБ</td>
-                </tr>
-                <tr>
-                  <th scope="row">Цвет корпуса:</th>
-                  <td>Белый</td>
-                </tr>
+              @endfor
             </table>
           </div>
           <div class="collapse" id="collapseExample_2" data-parent="#collapse_card_group">
@@ -135,4 +107,5 @@
 <script src="/js/custom.js"></script>
 <script src="/js/cartadd.js"></script>
 <script src="/js/modal-order.js"></script>
+<script src="/js/cursorpos.js"></script>
 @endsection

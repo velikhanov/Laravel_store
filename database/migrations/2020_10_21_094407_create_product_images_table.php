@@ -19,6 +19,8 @@ class CreateProductImagesTable extends Migration
             $table->foreign('product_id')->references('id')->on('products');
             $table->string('path');
             $table->integer('position');
+            $table->timestamp('updated_at');
+            $table->timestamp('created_at');
 
         });
     }

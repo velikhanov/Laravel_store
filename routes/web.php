@@ -18,9 +18,7 @@ Route::group(['middleware' => 'auth'], function(){
 
   Route::group(['middleware' => 'role:Admin,CEO', 'prefix' => 'admin'], function(){
 
-      Route::get('/ceo-panel', [AdminController::class, 'ceo_panel'])->middleware('role:CEO')->name('ceo_panel');
-
-      Route::get('/admin-panel', [AdminController::class, 'admin_panel'])->name('admin_panel');
+      Route::get('/admin-order', [AdminController::class, 'admin_order'])->name('admin_order');
 
       Route::resource('products', ProductController::class)->except([
         'show'

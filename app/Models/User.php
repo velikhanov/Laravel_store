@@ -60,7 +60,7 @@ class User extends Authenticatable
     {
         return $this->role === 2 ? 'СEO' : ($this->role === 1?'Admin':'User');
     }
-    public function getFormatNumberAttribute()
+    public function getFormatNumberUserAttribute()
     {
         return '+'.substr($this->phone, 0, 3).'('.substr($this->phone, 3, 2).')'.' '.substr($this->phone, 5, 3).'-'.substr($this->phone, 8, 2).'-'.substr($this->phone, 10, 2);
     }

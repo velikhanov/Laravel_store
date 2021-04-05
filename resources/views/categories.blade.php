@@ -30,7 +30,7 @@
           @foreach($product->products as $item)
           <div class="col-lg-3 col-md-3 col-sm-12 col-12">
             <div class="card mb-5">
-              <a class="prodlink" href="/{{ $product->code }}/{{ $product->url }}/{{ $item->url}}"><img class="card-img-top" src="/img/products/{{ $item->cardImage->path }}" alt="Card image cap"></a>
+              <a class="prodlink" href="/{{ $product->code }}/{{ $product->url }}/{{ $item->url}}"><img class="card-img-top" src="@isset($item->cardImage){{Storage::disk('public')->exists('products/'.$item->id.'/'.$item->cardImage->path)?Storage::url('products/'.$item->id.'/'.$item->cardImage->path):'/img/products/no-img.png'}}@else{{'/img/products/no-img.png'}}@endisset" alt="Card image cap"></a>
               <div class="card-body">
                 <a href="/{{ $product->code }}/{{ $product->url }}/{{ $item->url}}"><h5 class="card-title  text-center">{{ $item->name }}</h5></a>
                 <div class="prch"><span class="card-text">{{ $item->price }} AZN</span><span class="card-text"><i class="{{ $item->is_available_icon }}"></i>{{ $item->is_available_text }}</span></div><br>
@@ -62,4 +62,5 @@
 @section('pagesjs')
 <script src="/js/cartadd.js"></script>
 <script src="/js/modal-order.js"></script>
+<script src="/js/cursorpos.js"></script>
 @endsection

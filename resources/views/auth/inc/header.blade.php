@@ -56,14 +56,14 @@
 
       <ul class="nav flex-column bg-white mb-0">
         <li class="nav-item">
-          <a href="#" class="hoverNavItem nav-fonts nav-link text-dark font-italic {{ Request::is('user-panel') ? 'activeNavItem' : NULL }}">
+          <a href="{{ route('user_panel') }}" class="hoverNavItem nav-fonts nav-link text-dark font-italic {{ Request::is('user-panel') ? 'activeNavItem' : NULL }}">
                     <i class="fa fa-area-chart mr-1 text-primary fa-fw"></i>
                     Личный кабинет
                 </a>
         </li>
         @if(Auth::user()->role)
         <li class="nav-item">
-          <a href="#" class="hoverNavItem nav-fonts nav-link text-dark font-italic {{ Request::is('admin-panel') ? 'activeNavItem' : NULL }}">
+          <a href="{{ route('admin_order') }}" class="hoverNavItem nav-fonts nav-link text-dark font-italic {{ Request::is('admin/admin-order') ? 'activeNavItem' : NULL }}">
                     <i class="fa fa-bar-chart mr-1 text-primary fa-fw"></i>
                     Заказы
                 </a>
@@ -75,7 +75,7 @@
                 </a>
         </li>
         <li class="nav-item">
-          <a href="#" class="hoverNavItem nav-fonts nav-link text-dark font-italic {{ Request::is('edit-products') ? 'activeNavItem' : NULL }}">
+          <a href="{{ route('products.index') }}" class="hoverNavItem nav-fonts nav-link text-dark font-italic {{ Request::is('edit-products') ? 'activeNavItem' : NULL }}">
                     <i class="fa fa-line-chart mr-1 text-primary fa-fw"></i>
                     Товары
                 </a>

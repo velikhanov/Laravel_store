@@ -11,6 +11,24 @@ use App\Models\ProductImage;
 class Product extends Model
 {
   use HasFactory;
+  protected $fillable = [
+    'name',
+    'name_az',
+    'name_en',
+    'category_id',
+    'properties',
+    'properties_az',
+    'properties_en',
+    'description',
+    'description_az',
+    'description_en',
+    'price',
+    'url',
+    'status'
+  ];
+  protected $casts = [
+      'properties' => 'array'
+    ];
   public function productImage()
   {
       return $this->hasMany(ProductImage::class);

@@ -38,7 +38,7 @@
               </a>
               <div class="dropdown-menu dropdown-menu-right logout" aria-labelledby="navbarDropdown">
 								@if(Auth::user()->role)
-							  	<a class="dropdown-item" href="{{ route('admin_panel') }}">Панель администратора</a>
+							  	<a class="dropdown-item" href="{{ route('admin_order') }}">Панель администратора</a>
 								@endif
 							  	<a class="dropdown-item" href="{{ route('user_panel') }}">Личный кабинет</a>
 							  	<!--<a class="dropdown-item" href="#">Настройки</a>-->

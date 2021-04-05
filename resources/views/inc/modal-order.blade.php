@@ -52,7 +52,7 @@
 
                  </div>
                  <div class="form-group">
-                      <input id="phone" type="phone" class="form-control @error('phone') is-invalid @enderror" name="phone" placeholder="phone">
+                      <input id="phone" onClick="setPos();" type="phone" class="form-control @error('phone') is-invalid @enderror" name="phone" placeholder="phone">
 
                       @error('password')
                           <span class="invalid-feedback" role="alert">

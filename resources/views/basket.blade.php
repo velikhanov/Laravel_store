@@ -27,7 +27,7 @@
             <tbody>
                 @foreach($products as $product)
               <tr>
-                <th scope="row"><a href="/{{ $product['code_cat'] }}/{{ $product['url_cat'] }}/{{ $product['prod_url'] }}"><img class="basketimg mr-1" src="/img/products/{{ $product['img'] }}"><span class="basket-prod-name">{{ $product['name'] }}</span></a></th>
+                <th scope="row"><a href="/{{ $product['code_cat'] }}/{{ $product['url_cat'] }}/{{ $product['prod_url'] }}"><img class="basketimg mr-1" src="@isset($product['img']){{Storage::disk('public')->exists('products/'.$product['id'].'/'.$product['img'])?Storage::url('products/'.$product['id'].'/'.$product['img']):'/img/products/no-img.png'}}@else{{'/img/products/no-img.png'}}@endisset"><span class="basket-prod-name">{{ $product['name'] }}</span></a></th>
                 <td>
                   <div class="btn-group form-inline">
                       <div class="prodcount">{{ $product['qty'] }}</div>

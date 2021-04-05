@@ -7,45 +7,42 @@
 @section('title-admin', 'Продукты')
 
 @section('content-admin')
-<section class="section">
+<div class="container emp-profile">
   <div class="col-md-12">
+    @include('inc.flash')
        <h1>Товары</h1>
-       <table class="table">
+       <table class="table table-bordered">
            <tbody>
            <tr>
-               <th>
+               <th class="text-center">
                    #
                </th>
-               <th>
+               <th class="text-center">
                    Название
                </th>
-               <th>
+               <th class="text-center">
                    Категория
                </th>
-               <th>
+               <th class="text-center">
                    Статус
                </th>
-               <!-- <th>
-                   Кол-во товарных предложений
-               </th> -->
-               <!-- <th>
+               <th class="text-center">
                    Действия
-               </th> -->
+               </th>
            </tr>
              @foreach($products as $product)
                <tr>
                    <td>{{ $product->id }}</td>
-                   <td>{{ Str::limit($product->name, 10) }}</td>
+                   <td><!--<a href="/{{ $product->category->code }}/{{ $product->category->url }}/{{ $product->url }}">-->{{ Str::limit($product->name, 10) }}<!--</a>--></td>
                    <td>{{ $product->category->name }}</td>
                    <td><i class="{{ $product->IsAvailableIcon}} mr-1"></i>{{ $product->Is_Available_Text}}</td>
-                   <td></td>
-                   <td>
+                   <td class="text-center">
                        <div class="btn-group" role="group">
                            <form action="" method="POST">
                                <a class="btn btn-success" type="button"
-                                  href="">Открыть</a>
+                                  href="/{{ $product->category->code }}/{{ $product->category->url }}/{{ $product->url }}">Открыть</a>
                                <a class="btn btn-warning" type="button"
-                                  href="">Редактировать</a>
+                                  href="{{ route('products.edit', $product)}}">Редактировать</a>
                                @csrf
                                <input class="btn btn-danger" type="submit" value="Удалить"></form>
                        </div>
@@ -54,8 +51,7 @@
                @endforeach
            </tbody>
        </table>
-
        <a class="btn btn-success" type="button" href="{{ route('products.create') }}">Добавить товар</a>
    </div>
-</section>
+</div>
 @endsection

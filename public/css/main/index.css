@@ -32,6 +32,9 @@ margin: 10px;
   font-size: 15px;
   color: #000;
 }
+.card-img-top{
+  max-height: 300px;
+}
 .reg{
 font-size: 13px;
 margin-left: 5px;

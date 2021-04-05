@@ -22,7 +22,7 @@
                           </div>
                           <form action="{{route('new_order_place')}}" method="post">
                             <span>Имя:</span> <input placeholder="{{Auth::check()?Auth::user()->name:'Введите имя'}}" name="name">
-                            <span>Номер телефона:</span> <input class="phone" placeholder="{{Auth::check()?(Auth::user()->phone?Auth::user()->phone:'Введите номер телефона'):'Введите номер телефона'}}" name="phone">
+                            <span>Номер телефона:</span> <input class="phone" onClick="setPos();" placeholder="{{Auth::check()?(Auth::user()->phone?Auth::user()->Format_Number_User:'Введите номер телефона'):'Введите номер телефона'}}" name="phone">
                             <span>E-MAIL:</span> <input placeholder="{{Auth::check()?Auth::user()->email:'Введите имя'}}" name="e-mail">
                             @csrf
                               <div class="row">
@@ -39,7 +39,7 @@
                           @foreach($products as $product)
                           <h6><a href="/{{ $product['code_cat'] }}/{{ $product['url_cat'] }}/{{ $product['prod_url'] }}">{{ $product['name'] }}</a></h6>
                           <div class="row item">
-                              <div class="col-4 align-self-center"><a href="/{{ $product['code_cat'] }}/{{ $product['url_cat'] }}/{{ $product['prod_url'] }}"><img class="basketimg mr-1" src="/img/products/{{ $product['img'] }}"></a></div>
+                              <div class="col-4 align-self-center"><a href="/{{ $product['code_cat'] }}/{{ $product['url_cat'] }}/{{ $product['prod_url'] }}"><img class="basketimg mr-1" src="@isset($product['img']){{Storage::disk('public')->exists('products/'.$product['id'].'/'.$product['img'])?Storage::url('products/'.$product['id'].'/'.$product['img']):'/img/products/no-img.png'}}@else{{'/img/products/no-img.png'}}@endisset"></a></div>
                               <div class="col-8">
                                   <div class="row"><b>{{ $product['cost'] }} AZN</b></div>
                                   <div class="row"><div class="btn-group form-inline">
@@ -71,4 +71,7 @@
           <div> </div>
       </div>
 </section>
+@endsection
+@section('pagesjs')
+<script src="/js/cursorpos.js"></script>
 @endsection
