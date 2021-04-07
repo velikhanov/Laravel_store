@@ -118,14 +118,14 @@
                         <label class="btn btn-dark btn-file">
                             Загрузить <input type="file" style="display: none;" name="prodimg[]" id="prodimg" multiple>
                         </label>
-                        @isset($product)
+                        @isset($product->productImage)
                             <div class="preview d-flex flex-wrap">
                           @foreach($product->productImage as $prodimg)
                             <a class="removeImgBtn" href="#">
-                              <img src="{{Storage::url('products/'.$product->id)}}/{{ $prodimg->path}}" alt="Preview images">
+                              <img src="{{Storage::url('products/'.$product->id.'/'.$prodimg->path)}}" alt="Preview images">
                               <span>Кликните для удаления</span>
                               <div class="d-none">{{$prodimg->path}}</div>
-                              <input type="hidden" name="imgfordel[]" id="imgfordel">
+                              <input type="hidden" name="imgfordel[]">
                             </a>
                           @endforeach
                             </div>
@@ -141,7 +141,7 @@
                   <div class="row">
                       <div class="col-lg-12">
                           @isset($product)
-                            @for ($i=0; $i < (is_countable($product->properties) && count($product->properties)); $i++)
+                            @for ($i=0; $i < (count($product->properties)); $i++)
                             <div id="inputFormRow">
                                 <div class="input-group mb-3">
                                       <input type="text" name="properties[{{ $i }}][key]" value="{{ $product->properties[$i]['key'] ?? '' }}" class="form-control m-input ml-3" placeholder="Свойство" autocomplete="off">
@@ -152,10 +152,11 @@
                                 </div>
                             </div>
                           @endfor
-                          <input type="hidden" id="icount" value="{{ is_countable($product->properties) && count($product->properties) }}">
+                          <input type="hidden" id="icount" value="{{ count($product->properties) }}">
                         @endisset
+                        @empty($product)
                           @if(Session::has('properties'))
-                            @for ($i=0; $i < (is_countable(Session::get('properties')) && count(Session::get('properties'))); $i++)
+                            @for ($i=0; $i < (count(Session::get('properties'))); $i++)
                             <div id="inputFormRow">
                                 <div class="input-group mb-3">
                                       <input type="text" name="properties[{{ $i }}][key]" value="{{ Session::get('properties')[$i]['key'] ?? '' }}" class="form-control m-input ml-3" placeholder="Свойство" autocomplete="off">
@@ -167,6 +168,7 @@
                             </div>
                           @endfor
                         @endif
+                      @endempty
                           <div id="newRow"></div>
                           <button id="addRow" type="button" class="btn btn-info">Добавить поле</button>
                       </div>

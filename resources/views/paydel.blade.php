@@ -309,6 +309,8 @@
         </div>
     </div>
   </div><!--End container-->
-  <img class="payanddelimg" src="/img/pay&del/pay&delimg.png ">
+  <div class="w-100 text-center">
+    <img class="payanddelimg" src="/img/pay&del/pay&delimg.png ">
+  </div>
 </section>
 @endsection

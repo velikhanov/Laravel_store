@@ -9,7 +9,7 @@ class NavigationComposer
 {
   public function compose(View $view)
   {
-      $catalog = Category::where('parent_id', NULL)->get();
+      $catalog = Category::with('children')->where('parent_id', NULL)->get();
       return $view->with('catalog', $catalog);
   }
 }

@@ -10,15 +10,15 @@ use App\Models\Product;
 class MainController extends Controller
 {
   public function index(){
-    $proditem = Category::get();
+    $proditem = Category::with('products.cardImage')->get();
     return view('index', compact('proditem'));
   }
   public function categories($code){
-    $categories = Category::where('code', $code)->get();
+    $categories = Category::with('products.cardImage')->where('code', $code)->get();
     return view('categories', compact('categories'));
   }
   public function category($code, $url){
-    $category = Category::where('url', $url)->get();
+    $category = Category::with('products.cardImage')->where('url', $url)->get();
     return view('category', compact('category'));
   }
   public function product($code, $url, $suburl){

@@ -22,7 +22,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Product::all();
+        $products = Product::with('category')->get();
         return view('auth.products.index', compact('products'));
     }
 
@@ -52,7 +52,7 @@ class ProductController extends Controller
         'properties.*.value' => 'min:1',
         ]);
         $data = $request->all();
-        $data['url'] = mb_strtolower(preg_replace('/(?!^)\s+/', '_', preg_replace('/[^\00-\255]+/u', '', $request->name)));
+        $data['url'] = mb_strtolower(preg_replace('/(?!^)\s+/', '_', preg_replace('/[^\00-\255]+/u', '', $request->url)));
         $data['updated_at'] = Carbon::now();
         $data['created_at'] = Carbon::now();
         $product = Product::create($data);
@@ -67,14 +67,15 @@ class ProductController extends Controller
               $prodimg->storeAs('products/'.$product->id.'/', $dataimg['path']);
               ProductImage::create($dataimg);
             };
-          }else{
-            $dataimg['product_id'] = $product->id;
-            $dataimg['path'] = 'no-img.png';
-            $dataimg['position'] = "1";
-            $dataimg['updated_at'] = Carbon::now();
-            $dataimg['created_at'] = Carbon::now();
-            ProductImage::create($dataimg);
           };
+          // else{
+          //   $dataimg['product_id'] = $product->id;
+          //   $dataimg['path'] = '/img/products/no-img.png';
+          //   $dataimg['position'] = "1";
+          //   $dataimg['updated_at'] = Carbon::now();
+          //   $dataimg['created_at'] = Carbon::now();
+          //   ProductImage::create($dataimg);
+          // };
         return redirect()->route('products.index')->with('success', 'Продукт '.$product->name.' добавлен успешно!');
     }
 
@@ -117,7 +118,7 @@ class ProductController extends Controller
         'properties.*.value' => 'min:1',
         ]);
         $data = $request->all();
-        // $data['url'] = mb_strtolower(preg_replace('/(?!^)\s+/', '_', preg_replace('/[^\00-\255]+/u', '', $request->name)));
+        $data['url'] = mb_strtolower(preg_replace('/(?!^)\s+/', '_', preg_replace('/[^\00-\255]+/u', '', $request->url)));
         $data['updated_at'] = Carbon::now();
         $product->update($data);
         if(isset($request->imgfordel)){
@@ -146,7 +147,7 @@ class ProductController extends Controller
             ProductImage::create($dataimg);
           };
         };
-        return redirect()->route('products.edit', ['product' => $product->id])->with('success', 'Данные продукта '.$product->name.' успешно обновлен!');
+        return redirect()->route('products.edit', ['product' => $product->id])->with('success', 'Данные продукта '.$product->name.' успешно обновлены!');
     }
 
     /**
@@ -157,10 +158,12 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
+      if($product->productImage){
         foreach ($product->productImage as $prod) {
           Storage::disk('public')->exists('products/'.$product->id.'/'.$prod->path)?Storage::disk('public')->delete('products/'.$product->id.'/'.$prod->path):NULL;
           $prod->delete();
         }
+      }
         $product->delete();
 
         return redirect()->route('products.index')->with('danger', 'Продукт '.$product->name.' успешно удален!');

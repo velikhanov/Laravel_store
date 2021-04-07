@@ -70,7 +70,7 @@
       <div id="collapse_card_group" class="borderprop">
           <div class="collapse show" id="collapseExample_1" data-parent="#collapse_card_group">
             <table class="table table-bordered">
-              @for ($i=0; $i < (is_countable($prod->properties) && count($prod->properties)); $i++)
+              @for ($i=0; $i < (count($prod->properties)); $i++)
                 <tr>
                   <th scope="row">{{$prod->properties[$i]['key'] ?? ''}}:</th>
                   <td>{{ $prod->properties[$i]['value'] ?? ''}}</td>
