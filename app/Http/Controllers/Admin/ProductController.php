@@ -117,33 +117,36 @@ class ProductController extends Controller
         'properties.*.value' => 'min:1',
         ]);
         $data = $request->all();
-        $data['url'] = mb_strtolower(preg_replace('/(?!^)\s+/', '_', preg_replace('/[^\00-\255]+/u', '', $request->name)));
+        // $data['url'] = mb_strtolower(preg_replace('/(?!^)\s+/', '_', preg_replace('/[^\00-\255]+/u', '', $request->name)));
         $data['updated_at'] = Carbon::now();
         $product->update($data);
-        if ($request->hasFile('prodimg')){
-          $i = 1;
-          foreach ($request->file('prodimg') as $prodimg) {
-            if($product->productImage){
-              // Storage::disk('public')->exists('products/'.$product->id.'/'.$product->productImage?$product->productImage->path:NULL)?Storage::disk('public')->delete('products/'.$product->id.'/'.$product->productImage?$product->productImage->path:NULL):NULL;
-              // $product->productImage?$product->productImage->path->delete():NULL;
-              $dataimg['product_id'] = $product->id;
-              $dataimg['path'] = 'img_'.rand(1, 999).time().'.'.$prodimg->getClientOriginalExtension();
-              $dataimg['position'] = $i++;
-              $dataimg['updated_at'] = Carbon::now();
-              $prodimg->storeAs('products/'.$product->id.'/', $dataimg['path']);
-              $product->productImage()->update($dataimg);
-            }else{
-              $dataimg['product_id'] = $product->id;
-              $dataimg['path'] = 'img_'.rand(1, 999).time().'.'.$prodimg->getClientOriginalExtension();
-              $dataimg['position'] = $i++;
-              $dataimg['updated_at'] = Carbon::now();
-              $dataimg['created_at'] = Carbon::now();
-              $prodimg->storeAs('products/'.$product->id.'/', $dataimg['path']);
-              ProductImage::create($dataimg);
-            };
+        if(isset($request->imgfordel)){
+          foreach($request->imgfordel as $del) {
+            Storage::disk('public')->exists('products/'.$product->id.'/'.$del)?Storage::disk('public')->delete('products/'.$product->id.'/'.$del):NULL;
+            ProductImage::where('path', $del)->delete();
+          };
+          $editpos = 1;
+          foreach ($product->productImage as $imgpos) {
+            $datapos = $request->all();
+            $datapos['position'] = $editpos;
+            $editpos++;
+            $imgpos->update($datapos);
           };
         };
-        return redirect()->route('products.index')->with('success', 'Данные продукта '.$product->name.' успешно обновлен!');
+        if ($request->hasFile('prodimg')){
+          // $product->productImage?$i = (ProductImage::latest('position')->value('position') + 1):$i = 1;
+          $product->productImage?$i = ($product->productImage()->latest('position')->value('position') + 1):$i = 1;
+          foreach ($request->file('prodimg') as $prodimg) {
+            $dataimg['product_id'] = $product->id;
+            $dataimg['path'] = 'img_'.rand(1, 999).time().'.'.$prodimg->getClientOriginalExtension();
+            $dataimg['position'] = $i++;
+            $dataimg['updated_at'] = Carbon::now();
+            $dataimg['created_at'] = Carbon::now();
+            $prodimg->storeAs('products/'.$product->id.'/', $dataimg['path']);
+            ProductImage::create($dataimg);
+          };
+        };
+        return redirect()->route('products.edit', ['product' => $product->id])->with('success', 'Данные продукта '.$product->name.' успешно обновлен!');
     }
 
     /**
@@ -154,6 +157,12 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
-        //
+        foreach ($product->productImage as $prod) {
+          Storage::disk('public')->exists('products/'.$product->id.'/'.$prod->path)?Storage::disk('public')->delete('products/'.$product->id.'/'.$prod->path):NULL;
+          $prod->delete();
+        }
+        $product->delete();
+
+        return redirect()->route('products.index')->with('danger', 'Продукт '.$product->name.' успешно удален!');
     }
 }

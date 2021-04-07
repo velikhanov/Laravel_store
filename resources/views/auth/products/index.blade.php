@@ -38,13 +38,18 @@
                    <td><i class="{{ $product->IsAvailableIcon}} mr-1"></i>{{ $product->Is_Available_Text}}</td>
                    <td class="text-center">
                        <div class="btn-group" role="group">
-                           <form action="" method="POST">
+                           <form method="POST">
                                <a class="btn btn-success" type="button"
                                   href="/{{ $product->category->code }}/{{ $product->category->url }}/{{ $product->url }}">Открыть</a>
                                <a class="btn btn-warning" type="button"
                                   href="{{ route('products.edit', $product)}}">Редактировать</a>
                                @csrf
-                               <input class="btn btn-danger" type="submit" value="Удалить"></form>
+                           </form>
+                           <form class="ml-1" action="{{ route('products.destroy', $product)}}" method="POST">
+                             @method('DELETE')
+                             @csrf
+                             <input class="btn btn-danger" type="submit" value="Удалить">
+                           </form>
                        </div>
                    </td>
                </tr>

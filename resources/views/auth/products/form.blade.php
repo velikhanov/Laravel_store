@@ -61,6 +61,13 @@
                     </div>
                     <br>
                 <div class="input-group row">
+                    <label for="url" class="col-sm-2 col-form-label">Код товара: </label>
+                    <div class="col-sm-6">
+                      <input type="text" name="url" id="url" value="@empty($product){{old('url')}}@endempty @isset($product){{ $product->url }}@endisset">
+                    </div>
+                </div>
+                <br>
+                <div class="input-group row">
                     <label for="category_id" class="col-sm-2 col-form-label">Категория: </label>
                     <div class="col-sm-6">
 
@@ -111,12 +118,19 @@
                         <label class="btn btn-dark btn-file">
                             Загрузить <input type="file" style="display: none;" name="prodimg[]" id="prodimg" multiple>
                         </label>
-                        @isset($product->productImage)
+                        @isset($product)
+                            <div class="preview d-flex flex-wrap">
                           @foreach($product->productImage as $prodimg)
-                            <div class="preview d-inline"><img src="{{Storage::url('products/'.$product->id)}}/{{ $prodimg->path}}" alt=""></div>
+                            <a class="removeImgBtn" href="#">
+                              <img src="{{Storage::url('products/'.$product->id)}}/{{ $prodimg->path}}" alt="Preview images">
+                              <span>Кликните для удаления</span>
+                              <div class="d-none">{{$prodimg->path}}</div>
+                              <input type="hidden" name="imgfordel[]" id="imgfordel">
+                            </a>
                           @endforeach
+                            </div>
                         @else
-                        <div class="preview d-inline"></div>
+                            <div class="preview d-inline"></div>
                         @endisset
                     </div>
                 </div>

@@ -21,4 +21,9 @@ $(function() {
     $('#prodimg').on('change', function() {
         imagesPreview(this, 'div.preview');
     });
+    $('.removeImgBtn').on('click', function(e) {
+      e.preventDefault();
+      $(this).hide();
+      $(this).children('input').val($(this).children('div').text());
+    });
 });
