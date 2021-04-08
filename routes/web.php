@@ -6,6 +6,7 @@ use App\Http\Controllers\MainController;
 use App\Http\Controllers\BasketController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\Admin\CategoryController;
 
 
 //auth
@@ -21,6 +22,9 @@ Route::group(['middleware' => 'auth'], function(){
       Route::get('/admin-order', [AdminController::class, 'admin_order'])->name('admin_order');
 
       Route::resource('products', ProductController::class)->except([
+        'show'
+      ]);
+      Route::resource('categories', CategoryController::class)->except([
         'show'
       ]);
 

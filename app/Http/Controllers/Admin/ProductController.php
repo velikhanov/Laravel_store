@@ -50,6 +50,7 @@ class ProductController extends Controller
         'properties' => 'min:1',
         'properties.*.key' => 'min:1',
         'properties.*.value' => 'min:1',
+        'category_id' => 'required|min:1'
         ]);
         $data = $request->all();
         $data['url'] = mb_strtolower(preg_replace('/(?!^)\s+/', '_', preg_replace('/[^\00-\255]+/u', '', $request->url)));

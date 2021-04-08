@@ -18,7 +18,7 @@ $(function() {
 
     };
 
-    $('#prodimg').on('change', function() {
+    $('input[type=file]').on('change', function() {
         imagesPreview(this, 'div.preview');
     });
     $('.removeImgBtn').on('click', function(e) {

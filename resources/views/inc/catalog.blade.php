@@ -6,10 +6,10 @@
              <li class='has-sub'><a href="#"><span>Каталог</span></a>
                 <ul>
                   @foreach( $catalog as $item )
-                   <li class='has-sub'><a href="#"><img class="catalogimg" src="/img/categories/{{ $item->img }}"><span class="cat-text">{{ $item->name }}</span></a>
+                   <li class='has-sub'><a href="#"><img class="catalogimg" src="@isset($item->img){{Storage::url('categories/'.$item->img)}}@else /img/categories/kitchen-utensils.png @endisset"><span class="cat-text">{{ $item->name }}</span></a>
                       <ul>
                         @foreach( $item->children as $subitem )
-                         <li><a href='/{{ $item->url }}/{{ $subitem->url }}'><img class="catalogimg" src="/img/categories/{{ ($subitem->img == NULL)?'kitchen-utensils.png':$subitem->img }}"><span class="cat-text">{{ $subitem->name }}</span></a></li>
+                         <li><a href='/{{ $item->url }}/{{ $subitem->url }}'><img class="catalogimg" src="@isset($subitem->img){{Storage::url('categories/'.$subitem->img)}}@else /img/categories/kitchen-utensils.png @endisset"><span class="cat-text">{{ $subitem->name }}</span></a></li>
                         @endforeach
                       </ul>
                    </li>

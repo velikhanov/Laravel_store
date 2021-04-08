@@ -9,6 +9,16 @@ use App\Models\Product;
 
 class Category extends Model
 {
+  protected $fillable = [
+    'id',
+    'parent_id',
+    'name',
+    'code',
+    'url',
+    'img',
+    'updated_at',
+    'created_at'
+  ];
   protected $table = 'categories';
 
   public function parent()

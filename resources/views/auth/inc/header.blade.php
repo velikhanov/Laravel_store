@@ -69,7 +69,7 @@
                 </a>
         </li>
         <li class="nav-item">
-          <a href="#" class="hoverNavItem nav-fonts nav-link text-dark font-italic {{ Request::is('edit-categories') ? 'activeNavItem' : NULL }}">
+          <a href="{{ route('categories.index') }}" class="hoverNavItem nav-fonts nav-link text-dark font-italic {{ Request::is('edit-categories') ? 'activeNavItem' : NULL }}">
                     <i class="fa fa-pie-chart mr-1 text-primary fa-fw"></i>
                     Категории
                 </a>

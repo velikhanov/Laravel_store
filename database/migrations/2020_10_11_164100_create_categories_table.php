@@ -20,6 +20,8 @@ class CreateCategoriesTable extends Migration
             $table->string('code');
             $table->string('url');
             $table->string('img')->nullable();
+            $table->timestamp('updated_at');
+            $table->timestamp('created_at');
         });
     }
 

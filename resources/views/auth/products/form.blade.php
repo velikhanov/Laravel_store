@@ -42,7 +42,7 @@
                     </div>
                 </div>
                 <br>
-                    <div class="input-group row">
+                    <!-- <div class="input-group row">
                         <label for="name_az" class="col-sm-2 col-form-label">Название az: </label>
                         <div class="col-sm-6">
 
@@ -59,7 +59,7 @@
                                    value="@empty($product){{old('name_en')}}@endempty @isset($product){{ $product->name_en }}@endisset">
                         </div>
                     </div>
-                    <br>
+                    <br> -->
                 <div class="input-group row">
                     <label for="url" class="col-sm-2 col-form-label">Код товара: </label>
                     <div class="col-sm-6">
@@ -70,7 +70,11 @@
                 <div class="input-group row">
                     <label for="category_id" class="col-sm-2 col-form-label">Категория: </label>
                     <div class="col-sm-6">
-
+                      @if($categories->isEmpty())
+                      <select class="form-control">
+                        <option>Похоже нет ни одной картегории</option>
+                      </select>
+                      @else
                         <select name="category_id" id="category_id" class="form-control">
                             @foreach($categories as $category)
                                 <option value="{{ $category->id }}"
@@ -82,6 +86,7 @@
                                 >{{ $category->name }}</option>
                             @endforeach
                         </select>
+                        @endif
                     </div>
                 </div>
                 <br>
@@ -94,7 +99,7 @@
                     </div>
                 </div>
                 <br>
-                    <div class="input-group row">
+                    <!-- <div class="input-group row">
                         <label for="description" class="col-sm-2 col-form-label">Описание az: </label>
                         <div class="col-sm-6">
 
@@ -111,7 +116,7 @@
                                       rows="7">@empty($product){{old('description_en')}}@endempty @isset($product){{$product->description_en}}@endisset</textarea>
                         </div>
                     </div>
-                    <br>
+                    <br> -->
                 <div class="input-group row">
                     <label for="prodimg" class="col-sm-2 col-form-label">Картинка: </label>
                     <div class="col-sm-10">
