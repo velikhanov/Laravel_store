@@ -17,7 +17,7 @@ Route::group(['middleware' => 'auth'], function(){
   //
   // });
 
-  Route::group(['middleware' => 'role:Admin,CEO', 'prefix' => 'admin'], function(){
+  Route::group(['middleware' => 'is_admin', 'prefix' => 'admin'], function(){
 
       Route::get('/admin-order', [AdminController::class, 'admin_order'])->name('admin_order');
 

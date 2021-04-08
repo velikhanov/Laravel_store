@@ -17,13 +17,12 @@ class Role
      */
      public const Admin = '1';
      public const CEO = '2';
-     public function handle(Request $request, Closure $next, ... $roles){
+     public function handle(Request $request, Closure $next){
+
          $user = Auth::user();
 
-         $role = Auth::user()->role;
-
-         if (!in_array($user->hasRole(), $roles)) {
-           return redirect()->back();
+        if (!$user->isAdmin()) {
+            return redirect()->back()->with('warning', 'У вас нет прав администратора');
         }
 
         return $next($request);

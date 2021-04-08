@@ -46,15 +46,8 @@ class User extends Authenticatable
       return $this->hasMany(Order::class);
     }
 
-    public function hasRole(){
-
-      if($this->role === 2){
-        return 1&&2;
-      }else if($this->role === 1){
-        return 1;
-      }else{
-        return redirect()->back();
-      }
+    public function isAdmin(){
+        return $this->role === 1;
     }
     public function getUsersRoleAttribute()
     {
