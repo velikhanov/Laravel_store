@@ -81,14 +81,14 @@
                 </a>
         </li>
         @endif
-        @if(Auth::user()->role === 2)
+        <!-- @if(Auth::user()->role === 2)
         <li class="nav-item mb-3">
           <a href="#" class="hoverNavItem nav-fonts nav-link text-dark font-italic {{ Request::is('edit-users') ? 'activeNavItem' : NULL }}">
                     <i class="fa fa-line-chart mr-1 text-primary fa-fw"></i>
                     Пользователи
                 </a>
         </li>
-        @endif
+        @endif -->
       </ul>
     </div>
 </div>
