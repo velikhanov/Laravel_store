@@ -2,7 +2,7 @@
 
 ## About This Laravel Project
 
-This is my test Laravel project for United Skills.
+This is my test Laravel project.
 
 Note: The emphasis was on the Back End, so I didn't bother too much about the design and the project has not yet been adapted for phones.
 
@@ -49,7 +49,7 @@ If you are a beginner, then follow the instructions to install my project:
 
 Finally, you can run the project with the command in the console: `php artisan serve` and go to the site at the address specified in the console (usually http://127.0.0.1:8000/).
 
-P.S. To edit categories, you need to have administrator rights, for this open `PhpMyAdmin` and in the `comfort` database in the `users` table, in the `role` column, change `0` to `1` in your account column. With administrator rights, you get more authority.
+P.S. To add/edit/delete products/categories and check orders, you need to have administrator rights, for this open `PhpMyAdmin` and in the `comfort` database in the `users` table, in the `role` column, change `0` to `1` in your account column.
 
 
 

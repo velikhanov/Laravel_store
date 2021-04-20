@@ -25,6 +25,7 @@
 <script src="/js/bootstrap.min.js"></script>
 <script src="/js/jquery.maskedinput.min.js"></script>
 <script src="/js/header.js"></script>
+<script src="/js/jquery.fancybox.min.js"></script>
 @yield('pagesjs')
 </body>
 </html>
